@@ -1,5 +1,9 @@
-## Algoritmo feito para resolver o problema chamado “Help Vânia”
-Disponível no URI (Online Judge PROBLEMS & CONTESTS) => https://www.urionlinejudge.com.br/judge/en/problems/view/2498
+## Algorithm created to solve a problem similar to the KnapSack, but involving books and level of interests.
+This problem was published on URI (Online Judge PROBLEMS & CONTESTS)
+
+> https://www.urionlinejudge.com.br/judge/en/problems/view/2498
+
+Currently, this is the fastest algorithm done in Ruby to solve this problem, according to the URI's own website (0.180 s). :D
 
 # Problem description
 
