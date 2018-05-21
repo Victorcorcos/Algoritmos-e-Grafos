@@ -1,4 +1,4 @@
-## Algorithm made to solve the problem of how many recursive calls there are in the fibonacci sequence, also calculating the fibonacci value.
+## Algorithm created to discover how many recursive calls there are in the Fibonacci sequence, calculating the Fibonacci value at the same.
 This problem was published on URI (Online Judge PROBLEMS & CONTESTS)
 > https://www.urionlinejudge.com.br/judge/en/problems/view/1029
 
