@@ -1,5 +1,5 @@
 ## Algoritmo feito para resolver o problema chamado “Help Vânia”
-## Disponível no URI (Online Judge PROBLEMS & CONTESTS) => https://www.urionlinejudge.com.br/judge/en/problems/view/2498
+Disponível no URI (Online Judge PROBLEMS & CONTESTS) => https://www.urionlinejudge.com.br/judge/en/problems/view/2498
 
 # Problem description
 
