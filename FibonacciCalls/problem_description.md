@@ -1,5 +1,10 @@
-## Algoritmo feito para resolver o problema de quantas chamadas recursivas há na sequência de fibonacci, além de calcular o seu valor.
-Disponível no URI (Online Judge PROBLEMS & CONTESTS) => https://www.urionlinejudge.com.br/judge/en/problems/view/1029
+## Algorithm made to solve the problem of how many recursive calls there are in the fibonacci sequence, also calculating the fibonacci value.
+This problem was published on URI (Online Judge PROBLEMS & CONTESTS)
+> https://www.urionlinejudge.com.br/judge/en/problems/view/1029
+
+
+Currently, this is the fastest algorithm done in Ruby to solve this problem, according to the URI's own website (0.040 s). :D
+
 
 # Problem solution
 
