@@ -34,7 +34,7 @@ caso = 1
 
 loop do
   line = STDIN.gets.chomp
-  exit! if line == '0 0'
+  break if line == '0 0'
   line_items = line_to_array(line)
   number_of_books = line_items.first
   capacity = line_items.last
@@ -54,7 +54,6 @@ loop do
   vania_problem = Knapsack.new(items)
   result = vania_problem.fill_the_bag(capacity)
 
-  puts if caso == 1
   puts "Caso #{caso}: #{result}"
   caso += 1
 end
