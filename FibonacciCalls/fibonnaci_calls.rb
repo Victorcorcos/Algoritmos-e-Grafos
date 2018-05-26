@@ -5,7 +5,7 @@ def fibonacci_calls(number)
     fib_results.push(fib_results[index - 1] + fib_results[index - 2])
     fib_callbacks.push(fib_callbacks[index - 1] + fib_callbacks[index - 2] + 2)
   end
-  puts "fib(#{number}) = #{fib_callbacks[number]} calls = #{fib_results[number]}"
+  print 'fib(' << number.to_s << ') = ' << fib_callbacks[number].to_s << ' calls = ' << fib_results[number].to_s << "\n"
 end
 
 test_cases = STDIN.gets.chomp.to_i
@@ -15,34 +15,42 @@ test_cases.times do
   fibonacci_calls(number)
 end
 
-
 ###
 # More Fibonacci Functions below...
 ###
-# Top-Down
-# Bottom-Up with Array
-# Bottom-Up with just Auxiliary Variables (Space Saving)
 
-def fibonacci_top_down(n)
-  return n if n < 2
-  return fibonacci_top_down(n - 1) + fibonacci_top_down(n - 2)
+# Top-Down
+def fibonacci_top_down(value)
+  return value if value < 2
+  fibonacci_top_down(value - 1) + fibonacci_top_down(value - 2)
 end
 
-def fibonacci_bottom_up_array(n)
+# Top-Down with memoization
+@cache = {}
+def fibonacci_memo(value)
+  return value if value < 2
+  return @cache[value] if @cache.key? value
+  result = fibonacci_memo(value - 1) + fibonacci_memo(value - 2)
+  @cache[value] = result
+  result
+end
+
+# Bottom-Up with Array
+def fibonacci_bottom_up_array(value)
   fib_results = [0, 1]
-  (2..n+1).each do |index|
+  (2..value + 1).each do |index|
     fib_results.push(fib_results[index - 1] + fib_results[index - 2])
   end
-  fib_results[n]
+  fib_results[value]
 end
 
-def fibonacci_bottom_up_variables(n)
+# Bottom-Up with just Auxiliary Variables (Space Saving)
+def fibonacci_bottom_up_variables(value)
   first_before = 1
   second_before = 0
   result = 0
-  return second_before if n == 0
-  return first_before if n == 1
-  (2..n).each do
+  return value if value < 2
+  (2..value).each do
     result = first_before + second_before
     second_before = first_before
     first_before = result
