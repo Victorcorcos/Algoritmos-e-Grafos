@@ -59,15 +59,21 @@ knap_sack_dynamic(n, c)
 
 def knap_sack(n, c)
   return 0 if n.zero? || c.zero?
-  return knap_sack(n - 1, c) if @w[n - 1] > c
-  [knap_sack(n - 1, c), @v[n - 1] + knap_sack(n - 1, c - @w[n - 1])].max
+  if @w[n - 1] > c
+    return knap_sack(n - 1, c)
+  else
+    return [knap_sack(n - 1, c), @v[n - 1] + knap_sack(n - 1, c - @w[n - 1])].max
+  end
 end
 
 def knap_sack_dynamic(n, c)
   return @cache[[n, c]] if @cache.key? [n, c]
   return 0 if n.zero? || c.zero?
-  res = knap_sack_dynamic(n - 1, c) if @w[n - 1] > c
-  res = [knap_sack_dynamic(n - 1, c), @v[n - 1] + knap_sack_dynamic(n - 1, c - @w[n - 1])].max
+  if @w[n - 1] > c
+    res = knap_sack_dynamic(n - 1, c)
+  else
+    res = [knap_sack_dynamic(n - 1, c), @v[n - 1] + knap_sack_dynamic(n - 1, c - @w[n - 1])].max
+  end
   @cache[[n, c]] = res
 end
 

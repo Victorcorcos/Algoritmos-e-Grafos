@@ -13,13 +13,13 @@ class Knapsack
     @bag      = Array.new(@items.size + 1).map { [0] * (capacity + 1) }
 
     (1..@items.size).each do |item|
-      (1..capacity).each do |weight|
+      (1..capacity).each do |capacities|
         last_item = @bag[item - 1]
-        @bag[item][weight] = if @weights[item] > weight
-                               last_item[weight]
-                             else
-                               [last_item[weight - @weights[item]] + @values[item], last_item[weight]].max
-                             end
+        @bag[item][capacities] = if @weights[item] > capacities
+                                   last_item[capacities]
+                                 else
+                                   [last_item[capacities - @weights[item]] + @values[item], last_item[capacities]].max
+                                 end
       end
     end
     @bag[@items.size][capacity]
