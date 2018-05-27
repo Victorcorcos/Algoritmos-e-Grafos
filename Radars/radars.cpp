@@ -32,7 +32,6 @@ int main() {
     for (int i = MN - 2; i >= 0; --i) {
       memo[i] = memo[i + 1];
       if (aux[i] && (i + min_distance < MN))
-        cout << "aux[i]: " << aux[i] << ". memo[i]: " << memo[i] << ". values[i]: " << values[i] << ". ";
         memo[i] = max(memo[i], values[i] + memo[i + min_distance]);
     }
 
