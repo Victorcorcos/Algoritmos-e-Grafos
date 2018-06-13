@@ -33,37 +33,54 @@ class EraseAndWin
   end
 end
 
-## First test
-total_digits = 4
-digits_to_erase = 2
-entry = 3759
-erase_and_win = EraseAndWin.new(total_digits, digits_to_erase, entry)
-erase_and_win.calculate
+def line_to_array(line)
+  line.split(' ').map(&:to_i)
+end
 
-## Second test
-total_digits = 6
-digits_to_erase = 3
-entry = 123123
-erase_and_win = EraseAndWin.new(total_digits, digits_to_erase, entry)
-erase_and_win.calculate
+loop do
+  line = STDIN.gets.chomp
+  break if line == '0 0'
+  totals_and_to_erase = line_to_array(line)
+  total_digits = totals_and_to_erase.first
+  digits_to_erase = totals_and_to_erase.last
 
-## Third test
-total_digits = 7
-digits_to_erase = 4
-entry = 1000000
-erase_and_win = EraseAndWin.new(total_digits, digits_to_erase, entry)
-erase_and_win.calculate
+  entry = STDIN.gets.chomp.to_i
 
-## Fourth test
-total_digits = 7
-digits_to_erase = 3
-entry = 1001234
-erase_and_win = EraseAndWin.new(total_digits, digits_to_erase, entry)
-erase_and_win.calculate
+  erase_and_win = EraseAndWin.new(total_digits, digits_to_erase, entry)
+  erase_and_win.calculate
+end
 
-## Fifth test
-total_digits = 6
-digits_to_erase = 2
-entry = 103759
-erase_and_win = EraseAndWin.new(total_digits, digits_to_erase, entry)
-erase_and_win.calculate
+# ## First test
+# total_digits = 4
+# digits_to_erase = 2
+# entry = 3759
+# erase_and_win = EraseAndWin.new(total_digits, digits_to_erase, entry)
+# erase_and_win.calculate
+
+# ## Second test
+# total_digits = 6
+# digits_to_erase = 3
+# entry = 123123
+# erase_and_win = EraseAndWin.new(total_digits, digits_to_erase, entry)
+# erase_and_win.calculate
+
+# ## Third test
+# total_digits = 7
+# digits_to_erase = 4
+# entry = 1000000
+# erase_and_win = EraseAndWin.new(total_digits, digits_to_erase, entry)
+# erase_and_win.calculate
+
+# ## Fourth test
+# total_digits = 7
+# digits_to_erase = 3
+# entry = 1001234
+# erase_and_win = EraseAndWin.new(total_digits, digits_to_erase, entry)
+# erase_and_win.calculate
+
+# ## Fifth test
+# total_digits = 6
+# digits_to_erase = 2
+# entry = 103759
+# erase_and_win = EraseAndWin.new(total_digits, digits_to_erase, entry)
+# erase_and_win.calculate
