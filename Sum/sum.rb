@@ -1,2 +1,4 @@
-n = STDIN.gets.chomp.to_i + STDIN.gets.chomp.to_i
+require 'scanf'
+
+n = scanf('%d').first + scanf('%d').first
 print 'SOMA = ' << n.to_s << "\n"

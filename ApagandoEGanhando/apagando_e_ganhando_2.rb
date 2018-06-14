@@ -6,25 +6,24 @@ class EraseAndWin
     @total_digits = total_digits
     @digits_to_erase = digits_to_erase
     @entry = entry.to_s.split('').map(&:to_i)
+    @sorted_digits = @entry.sort
   end
 
   def calculate
-    @digits_to_erase.times do
-      minimum = @entry.min
-      remove_from_left!(@entry, minimum)
+    while @digits_to_erase > 0
+      minimum = @sorted_digits.first
+
+      @entry.each_with_index do |item, index|
+        next if item != minimum
+        @entry.delete_at(index)
+        @digits_to_erase -= 1
+        break if @digits_to_erase.zero?
+      end
+
+      @sorted_digits.shift
     end
 
     print_entry
-  end
-
-  def remove_from_left!(array, value)
-    array.each_with_index do |item, index|
-      if item == value
-        array.delete_at(index)
-        return true
-      end
-    end
-    false
   end
 
   def print_entry
@@ -49,12 +48,12 @@ loop do
   erase_and_win.calculate
 end
 
-## First test
-total_digits = 4
-digits_to_erase = 2
-entry = 3759
-erase_and_win = EraseAndWin.new(total_digits, digits_to_erase, entry)
-erase_and_win.calculate
+# ## First test
+# total_digits = 4
+# digits_to_erase = 2
+# entry = 3759
+# erase_and_win = EraseAndWin.new(total_digits, digits_to_erase, entry)
+# erase_and_win.calculate
 
 # ## Second test
 # total_digits = 6
@@ -83,3 +82,4 @@ erase_and_win.calculate
 # entry = 103759
 # erase_and_win = EraseAndWin.new(total_digits, digits_to_erase, entry)
 # erase_and_win.calculate
+
