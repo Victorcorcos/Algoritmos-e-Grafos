@@ -21,10 +21,10 @@ int main() {
 }
 
 int caminho(int vertice) {
-  if (vertice == adjacencias[vertice])
-    return vertice;
-  else
+  if (vertice != adjacencias[vertice])
     return caminho(adjacencias[vertice]);
+  else
+    return vertice;
 }
 
 void preenche_adjacencia(int inicio, int fim) {
@@ -36,7 +36,6 @@ void promessa_de_campanha() {
   scanf("%d", &qtd_pontos);
   scanf("%d", &qtd_estradas);
 
-  // Preenche vetor adjacencias[i] com i
   int i = 0;
   while (i < MAX) {
     adjacencias[i] = i;
@@ -53,15 +52,15 @@ void promessa_de_campanha() {
 
   std::set<int> estradas;
 
-  i = 0;
-  while (i < qtd_pontos) {
-    estradas.insert(caminho(i));
-    i += 1;
+  int j = 0;
+  while (j < qtd_pontos) {
+    estradas.insert(caminho(j));
+    j += 1;
   }
 
-  if (estradas.size() == 1) {
-    printf("a promessa foi cumprida\n");
-  } else {
+  if (estradas.size() != 1) {
     printf("ainda falta(m) %lu estrada(s)\n", estradas.size() - 1);
+  } else {
+    printf("a promessa foi cumprida\n");
   }
 }
