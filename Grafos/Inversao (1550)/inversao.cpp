@@ -15,7 +15,6 @@ int main() {
     while (qtd_testes >= 1) {
         scanf("%d", &valor_inicial);
         scanf("%d", &valor_desejado);
-
         busca_largura(valor_inicial, valor_desejado);
         qtd_testes -= 1;
     }
