@@ -5,9 +5,10 @@ using namespace std;
 
 queue<int> nodos;
 
-void calcula(vector<int> *adjacencias, int *examinados);
+void inicializa_examinados(int *examinados, int qtd_vertices);
 void limpa_adjacencias(vector<int> *adjacencias, int qtd_vertices);
 void preenche_adjacencias(vector<int> *adjacencias, int qtd_arestas);
+void soluciona(vector<int> *adjacencias, int *examinados);
 
 int main(void)
 {
@@ -19,20 +20,24 @@ int main(void)
 
   while (i) {
     cin >> nodo >> qtd_vertices >> qtd_arestas;
+
     int examinados[qtd_vertices];
-    memset(examinados, 0, sizeof(examinados));
+    inicializa_examinados(examinados, qtd_vertices);
 
     vector<int> adjacencias[qtd_vertices];
-    
     limpa_adjacencias(adjacencias, qtd_vertices);
     preenche_adjacencias(adjacencias, qtd_arestas);
 
     nodos.push(nodo);
     examinados[nodo] = 1;
-    calcula(adjacencias, examinados);
+    soluciona(adjacencias, examinados);
     i -= 1;
   }
   return 0;
+}
+
+void inicializa_examinados(int *examinados, int qtd_vertices) {
+  for(int i = 0; i < qtd_vertices; examinados[i] = 0, i++);
 }
 
 void limpa_adjacencias(vector<int> *adjacencias, int qtd_vertices) {
@@ -56,9 +61,10 @@ void preenche_adjacencias(vector<int> *adjacencias, int qtd_arestas) {
   }
 }
 
-void calcula(vector<int> *adjacencias, int *examinados) {
+void soluciona(vector<int> *adjacencias, int *examinados) {
   int movimentos = 0;
   int mov_correto = 0;
+
   while (nodos.size()) {
     int gvertice = adjacencias[nodos.front()].size();
     int i = 0;
